@@ -1,0 +1,4 @@
+<no-location>
+    <remove xpath="/xui/ruleset/window_group[@name='toolbelt']/window[@name='windowLocation']"/>
+    <remove xpath="/xui/ruleset/window_group[@name='compass']/window[@name='windowEntering']"/>
+</no-location>
