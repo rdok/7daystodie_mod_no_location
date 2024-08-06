@@ -5,7 +5,8 @@
 
 > Hides the location window on the top center and top right of the screen.
 
-[![No Compass Showcase](https://raw.githubusercontent.com/rdok/7daystodie_mod_no_location/main/documentation/no_compass_showcase.jpg)](https://www.nexusmods.com/7daystodie/mods/5684)
+[![No Compass Showcase](https://raw.githubusercontent.com/rdok/7daystodie_mod_no_location/main/documentation/showcase.jpg)](https://www.nexusmods.com/7daystodie/mods/5684)
+
 
 
 - 7daystodie Version: 1.0 (b333)
