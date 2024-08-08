@@ -7,12 +7,12 @@
 [![No Compass Showcase](https://raw.githubusercontent.com/rdok/7daystodie_mod_no_location/main/documentation/showcase.jpg)](https://www.nexusmods.com/7daystodie/mods/5684)
 
 
-
 - 7daystodie Version: 1.0 (b333)
 - Install with [Vortex](https://www.nexusmods.com/about/vortex/).
 
 ## Features
 - Hides the location window on the top center and top right of the screen.
+- Compatible with other interfaces mods as long as it is loaded afterward. 
 
 ### Modding Sources
 - [AGF - V1.0 - HUD PLUS](https://www.nexusmods.com/7daystodie/mods/870) for a mod template
