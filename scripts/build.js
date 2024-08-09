@@ -1,25 +1,37 @@
-const { readFileSync, unlinkSync, mkdirSync, cpSync } = require("fs");
+const { readFileSync, unlinkSync, mkdirSync, cpSync, rmSync } = require("fs");
 const { join } = require("path");
 const { execSync } = require("child_process");
-require("dotenv").config();
+const { DOMParser } = require('xmldom');
+const xpath = require('xpath');
 
-const packageJsonPath = join(__dirname, "..", "package.json");
-const packageJsonRaw = readFileSync(packageJsonPath, "utf8");
-const packageJson = JSON.parse(packageJsonRaw);
-const version = packageJson.version;
-const name = `${process.env.NO_LOCATION}_${version}.7z`;
+const xmlFilePath = join(__dirname, "../src/", "ModInfo.xml");
+const xmlRaw = readFileSync(xmlFilePath, "utf8");
+const doc = new DOMParser().parseFromString(xmlRaw, 'text/xml');
+const versionNode = xpath.select1("/xml/Version/@value", doc);
+const modNameNode = xpath.select1("/xml/Name/@value", doc);
+
+const version = versionNode.value;
+const modName = modNameNode.value;
+
+const artifact = `${modName}_${version}.7z`;
+const distDir = join(__dirname, "..", "dist");
 
 try {
-  unlinkSync(name);
+  rmSync(distDir, {recursive: true});
 } catch (e) {
-  // Expected behaviour if it doesn't exist.
+  // directory does not exist
 }
 
+try {
+  unlinkSync(artifact);
+} catch (e) {
+}
+
+const modDistDir = join(distDir, modName);
 const srcDir = join(__dirname, "..", "src");
-const distDir = join(__dirname, "..", "dist", process.env.no_location);
 
-mkdirSync(distDir, { recursive: true });
+mkdirSync(modDistDir, { recursive: true });
 
-cpSync(srcDir, distDir, { recursive: true });
+cpSync(srcDir, modDistDir, { recursive: true });
 
-execSync(`.\\node_modules\\7z-bin\\win32\\7z.exe a "${name}" "${distDir}"`);
+execSync(`.\\node_modules\\7z-bin\\win32\\7z.exe a "${artifact}" "${modDistDir}"`);

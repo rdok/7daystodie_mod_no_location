@@ -1,4 +1,7 @@
 <no-location>
-    <remove xpath="/windows/window[@name='windowLocation']//*"/>
-    <remove xpath="/windows/window[@name='windowEntering']//*"/>
+    <setattribute xpath="/windows/window[@name='windowLocation']" name="visible">false</setattribute>
+    <setattribute xpath="/windows/window[@name='windowLocation']" name="force_hide">true</setattribute>
+
+    <setattribute xpath="/windows/window[@name='windowLocation']" name="visible">false</setattribute>
+    <setattribute xpath="/windows/window[@name='windowEntering']" name="force_hide">true</setattribute>
 </no-location>
